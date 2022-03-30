@@ -4,6 +4,8 @@ import * as AiIcons from "react-icons/ai";
 import * as IOIcons from "react-icons/io";
 
 
+
+
 export const SidebarData = [
     {
         title: "Home",
@@ -12,16 +14,10 @@ export const SidebarData = [
         cName: "nav-text"
     },
     {
-        title: "Connextion",
-        path: "/login",
-        icon: <AiIcons.AiOutlineLogin />,
+        title: "test genaly import",
+        path: "/test",
+        icon: <AiIcons.AiOutlineInfoCircle />,
         cName: "nav-text"
-    },
-    {
-        title: "Inscription",
-        path: "/register",
-        icon: <AiIcons.AiFillEdit />,
-        cName: "nav-text"
-    },
+    }
 
 ]
