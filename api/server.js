@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
 import User from "./models/user.js";
+import Diapo from './models/diapo.js'
 import bcrypt from "bcrypt";
 import cors from "cors"
 import jwt from 'jsonwebtoken';
@@ -32,24 +33,24 @@ app.get('/user', (req, res) => {
     const payload = jwt.verify(req.cookies.token, secret);
     User.findById(payload.id)
         .then(userInfo => {
-            res.json({ id: userInfo._id, email: userInfo.email });
+            res.json({ id: userInfo._id, email: userInfo.email, roles: userInfo.roles });
         })
 })
 
 app.post('/register', (req, res) => {
     const { email, password } = req.body;
     const hashedPassword = bcrypt.hashSync(password, 10);
-    const user = new User({ email: email, password: hashedPassword });
+    const user = new User({ email: email, password: hashedPassword , roles: ["commonUser"] });
     User.findOne({ email }).then(data => {
         
         if (data == null) {
             user.save().then(userInfo => {
-                jwt.sign({ id: userInfo._id, email: userInfo.email }, secret, (err, token) => {
+                jwt.sign({ id: userInfo._id, email: userInfo.email  }, secret, (err, token) => {
                     if (err) {
                         console.log(err);
                         res.sendStatus(500);
                     } else {
-                        res.cookie('token', token).json({ id: userInfo._id, email: userInfo.email });
+                        res.cookie('token', token).json({ id: userInfo._id, email: userInfo.email, roles: userInfo.roles });
                     }
                 })
             })
@@ -74,7 +75,7 @@ app.post('/login', (req, res) => {
                             console.log(err);
                             res.sendStatus(500);
                         } else {
-                            res.cookie('token', token).json({ id: userInfo._id, email: userInfo.email });
+                            res.cookie('token', token).json({ id: userInfo._id, email: userInfo.email, roles: userInfo.roles });
                         }
                     });
 
