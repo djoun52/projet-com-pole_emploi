@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
-
+import './BtnLogout.css'
 export default function BtnLogout() {
 
     const navigate = useNavigate()
@@ -21,7 +21,7 @@ export default function BtnLogout() {
     }
     return (
         <>
-            <button onClick={logOut} className='btn-logout'>Log out</button>
+            <button onClick={logOut} className='btn-logout'>déconnexion</button>
 
         </>
     )

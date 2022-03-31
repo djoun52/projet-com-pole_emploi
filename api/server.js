@@ -10,10 +10,10 @@ import jwt from 'jsonwebtoken';
 
 const secret = "secret123";
 
-await mongoose.connect('mongodb+srv://Mernadmin:Bh8O42qgwLTAuqAl@merndb.v5ytp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+await mongoose.connect('mongodb+srv://admin:n3uq2JVDG00KTovu@bddPoleEmploie.ulo4r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection;
 db.on('error', console.log)
-WVvFLRAZPwCfRdwU
+
 
 const app = express();
 

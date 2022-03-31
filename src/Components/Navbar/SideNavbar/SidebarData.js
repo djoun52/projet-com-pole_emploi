@@ -18,6 +18,12 @@ export const SidebarData = [
         path: "/test",
         icon: <AiIcons.AiOutlineInfoCircle />,
         cName: "nav-text"
+    },
+    {
+        title: "form genaly",
+        path: "/addg",
+        icon: <AiIcons.AiOutlineInfoCircle />,
+        cName: "nav-text"
     }
 
 ]

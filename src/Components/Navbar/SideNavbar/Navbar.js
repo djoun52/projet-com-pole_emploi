@@ -51,7 +51,6 @@ export default function Navbar() {
                         {!email && (
                             <>
                                 <li className="nav-text">
-                                    
                                     <Link to='/login'><AiIcons.AiOutlineLogin />Login</Link>
                                 </li>
                                 <li className="nav-text">
