@@ -35,12 +35,12 @@ app.get('/user', (req, res) => {
             const payload = jwt.verify(req.cookies.token, secret);
             User.findById(payload.id)
                 .then(userInfo => {
-                    res.json({ id: userInfo._id, email: userInfo.email, roles: userInfo.roles });
+                    res.json({ statue: 'user', id: userInfo._id, email: userInfo.email, roles: userInfo.roles });
                 }).catch(() => {
-                    res.json({response: 'Error'})
-                    })
-        }catch (err) {
-            res.json({ response: 'no user' })
+                    res.json({ response: 'Error' })
+                })
+        } catch (err) {
+            res.json({ statue: 'no user' })
         }
 })
 
