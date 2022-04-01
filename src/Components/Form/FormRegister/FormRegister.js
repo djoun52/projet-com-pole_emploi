@@ -12,7 +12,7 @@ export default function FormRegister() {
         password: ''
     })
     const [errorRegister, setErrorRegister] = useState(false)
-    const { toggleTheme, theme } = useContext(ThemeContext)
+    const { theme } = useContext(ThemeContext)
     const dispatch = useDispatch();
     const navigate = useNavigate()
 

@@ -28,8 +28,6 @@ function App() {
           payload: response.data.email,
         })
       });
-
-
   }, [])
   return (
 

@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { ThemeContext } from '../../../Context/ThemeContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import './FormAddGen.css';
 
 
@@ -16,7 +16,7 @@ export default function FormAddGen() {
     const [requestError, setRequestError] = useState(false)
 
     const navigate = useNavigate()
-    const { toggleTheme, theme } = useContext(ThemeContext)
+    const { theme } = useContext(ThemeContext)
 
 
     const handleForm = (e) => {
@@ -62,7 +62,7 @@ export default function FormAddGen() {
                     className='inp-link'
                     value={input.link}
                     onInput={changeInput}
-                    placeholder="Entrez le lien" />
+                    placeholder="Entrer le lien" />
                 <label htmlFor="titre">titre du genially</label>
                 <input
                     type="text"
@@ -71,12 +71,15 @@ export default function FormAddGen() {
                     className='inp-titre'
                     value={input.titre}
                     onInput={changeInput}
-                    placeholder="Entrez le titre" />
+                    placeholder="Entrer le titre" />
                 <button
                     className={theme ? "btn-dark" : "btn-light"}
                     type="submit"
                 >ajouter</button>
             </form>
+            {requestError && (
+                <h2>Error formulaire</h2>
+            )}
         </>
     )
 }

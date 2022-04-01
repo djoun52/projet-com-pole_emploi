@@ -30,11 +30,18 @@ app.get('/', (req, res) => {
 })
 
 app.get('/user', (req, res) => {
-    const payload = jwt.verify(req.cookies.token, secret);
-    User.findById(payload.id)
-        .then(userInfo => {
-            res.json({ id: userInfo._id, email: userInfo.email, roles: userInfo.roles });
-        })
+    
+        try {
+            const payload = jwt.verify(req.cookies.token, secret);
+            User.findById(payload.id)
+                .then(userInfo => {
+                    res.json({ id: userInfo._id, email: userInfo.email, roles: userInfo.roles });
+                }).catch(() => {
+                    res.json({response: 'Error'})
+                    })
+        }catch (err) {
+            res.json({ response: 'no user' })
+        }
 })
 
 app.post('/register', (req, res) => {

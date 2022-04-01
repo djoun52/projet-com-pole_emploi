@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import './Navbar.css'
 import { Link } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom'
+import { useSelector} from 'react-redux';
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import BtnLogout from '../../BtnLogout/BtnLogout';
 import { SidebarData } from "./SidebarData"
 import { IconContext } from 'react-icons';
-import * as GrIcons from "react-icons/gr";
 
 
 export default function Navbar() {
 
     const [sidebar, setSidebar] = useState(false)
     const showSidebar = () => setSidebar(!sidebar)
-    let result ;
+
 
     const { email } = useSelector(state => ({
         ...state.userReducer,
